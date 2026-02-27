@@ -1,6 +1,6 @@
-# Public Good Design System
+# Public Good Design System &rarr; NHS UK &rarr; Next Tailwind DaisyUI
 
-A modern, accessible React component library converted from the NHS UK Design System, built with Next.js 15, TypeScript, and styled-components.
+A modern, accessible React component library converted from the NHS UK Design System, built with Next.js 15, TypeScript, Tailwind, DaisyUI, and styled-components.
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 [![Test Coverage](https://img.shields.io/badge/coverage-98.5%25-brightgreen.svg)](#)
@@ -12,8 +12,9 @@ A modern, accessible React component library converted from the NHS UK Design Sy
 This project is **production ready**! We have successfully converted all 40 components from the NHS UK Design System to create a modern, accessible, and reusable design system for public good applications.
 
 ### Progress Overview
+
 - ✅ **Project Setup** - Complete
-- ✅ **Design System Foundation** - Complete  
+- ✅ **Design System Foundation** - Complete
 - ✅ **Testing Infrastructure** - Complete (1063+ passing tests)
 - ✅ **Component Conversion** - Complete (40/40 components)
 - ✅ **Internationalization** - Complete (5 languages)
@@ -32,7 +33,9 @@ This project is **production ready**! We have successfully converted all 40 comp
 ## 🏗️ Architecture
 
 ### Component Structure
+
 Each component follows a consistent structure:
+
 ```
 src/components/[component-name]/
 ├── index.tsx           # Main component
@@ -44,30 +47,33 @@ src/components/[component-name]/
 ```
 
 ### Design Tokens
+
 ```typescript
-import { theme } from '@/styles/tokens';
+import { theme } from "@/styles/tokens";
 
 // Colors
-theme.colors.primary      // #005eb8 (NHS Blue)
-theme.colors.white        // #ffffff
-theme.colors.black        // #212b32
+theme.colors.primary; // #005eb8 (NHS Blue)
+theme.colors.white; // #ffffff
+theme.colors.black; // #212b32
 
 // Typography
-theme.typography.fontSize.base  // 1rem (16px)
-theme.typography.fontFamily.base // Frutiger W01, Helvetica Neue...
+theme.typography.fontSize.base; // 1rem (16px)
+theme.typography.fontFamily.base; // Frutiger W01, Helvetica Neue...
 
 // Spacing
-theme.spacing[4]          // 1rem (16px)
-theme.spacing[8]          // 2rem (32px)
+theme.spacing[4]; // 1rem (16px)
+theme.spacing[8]; // 2rem (32px)
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 20.9.0 or 22.11.0+
 - npm or yarn
 
 ### Installation
+
 ```bash
 git clone [repository-url]
 cd public-good-design-system-with-next-js
@@ -75,6 +81,7 @@ npm install
 ```
 
 ### Development
+
 ```bash
 # Start development server
 npm run dev
@@ -98,6 +105,7 @@ npm run lint
 ## 🧪 Testing
 
 ### Unit Tests (Vitest)
+
 ```bash
 npm run test           # Run tests once
 npm run test:watch     # Run tests in watch mode
@@ -105,6 +113,7 @@ npm run test:coverage  # Run tests with coverage
 ```
 
 ### E2E Tests (Playwright)
+
 ```bash
 npm run test:e2e       # Run E2E tests
 ```
@@ -112,30 +121,37 @@ npm run test:e2e       # Run E2E tests
 ## 📦 Components
 
 ### Available Components (40 total)
+
 Complete set of production-ready components converted from the NHS UK Design System:
 
 **Form Elements:**
+
 - ActionLink, BackLink, Button, CharacterCount, Checkboxes, DateInput, ErrorMessage, ErrorSummary, Fieldset, Hint, Input, Label, Radios, Select, Textarea
 
-**Navigation:** 
+**Navigation:**
+
 - Breadcrumb, Footer, Header, SkipLink, Pagination
 
 **Content Display:**
+
 - Card, ContentsList, Details, Images, InsetText, NotificationBanner, Panel, SummaryList, Table, Tabs, WarningCallout
 
 **Interactive:**
+
 - DoDontList, Tag, TaskList
 
 **Utilities:**
+
 - Hero (currently under investigation for event handler optimization)
 
 ### Component Usage
+
 ```tsx
-import { Button } from '@public-good/design-system';
+import { Button } from "@public-good/design-system";
 
 function MyApp() {
   return (
-    <Button variant="primary" onClick={() => console.log('Clicked!')}>
+    <Button variant="primary" onClick={() => console.log("Clicked!")}>
       Save and continue
     </Button>
   );
@@ -145,6 +161,7 @@ function MyApp() {
 ## 🌍 Internationalization
 
 The design system supports multiple languages:
+
 - English (en) - Primary
 - Welsh (cy)
 - Arabic (ar) - RTL support
@@ -154,6 +171,7 @@ The design system supports multiple languages:
 ## ♿ Accessibility
 
 All components are built with accessibility in mind:
+
 - WCAG AA compliance
 - Keyboard navigation support
 - Screen reader compatibility
@@ -164,13 +182,16 @@ All components are built with accessibility in mind:
 ## 🎨 Design Principles
 
 ### Converted from NHS UK Design System
+
 This design system maintains the core principles of the NHS UK Design System:
+
 - **Accessible**: Meeting WCAG AA standards
 - **Cohesive**: Consistent design patterns
 - **Open**: Built for reuse and contribution
 - **Useful**: Solving real user needs
 
 ### Key Changes from NHS UK
+
 - **Modern Stack**: Next.js + TypeScript + styled-components
 - **Component Architecture**: React functional components with hooks
 - **Enhanced Testing**: Comprehensive unit and E2E testing
@@ -180,15 +201,19 @@ This design system maintains the core principles of the NHS UK Design System:
 ## 📚 Documentation
 
 ### Component Documentation
+
 Each component includes:
+
 - Usage guidelines
-- Props documentation  
+- Props documentation
 - Accessibility notes
 - Examples and variations
 - Migration notes from NHS UK
 
 ### Design Tokens Documentation
+
 Complete documentation of all design tokens including:
+
 - Color palette and usage
 - Typography scale and guidelines
 - Spacing system
@@ -199,6 +224,7 @@ Complete documentation of all design tokens including:
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ### Development Workflow
+
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
