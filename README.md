@@ -1,49 +1,125 @@
 # Public Good Design System &rarr; NHS UK &rarr; Next Tailwind DaisyUI
 
-A modern, accessible React component library converted from the NHS UK Design System, built with Next.js 15, TypeScript, Tailwind, DaisyUI, and styled-components.
+A modern, accessible React component library converted from the NHS UK Design System, built with Next.js 15, TypeScript, and styled-components.
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
-[![Test Coverage](https://img.shields.io/badge/coverage-98.5%25-brightgreen.svg)](#)
-[![Accessibility](https://img.shields.io/badge/accessibility-WCAG%20AA-blue.svg)](#)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
+One of three variations:
 
-## 🎯 Project Status
+- [NHS UK &rarr; HTML CSS Javascript](https://github.com/joelparkerhenderson/public-good-design-system-nhs-uk-html-css-typescript)
+- [NHS UK &rarr; Next.js Tailwind DaisyUI](https://github.com/joelparkerhenderson/public-good-design-system-nhs-uk-next-tailwind-daisyui) (This one)
+- [NHS UK &rarr; Svelte Tailwind DaisyUI](https://github.com/joelparkerhenderson/public-good-design-system-nhs-uk-svelte-tailwind-daisyui)
 
-This project is **production ready**! We have successfully converted all 40 components from the NHS UK Design System to create a modern, accessible, and reusable design system for public good applications.
+## Overview
 
-### Progress Overview
+This project provides a production-ready component library adapted from the [NHS UK Design System](https://service-manual.nhs.uk/design-system). It retains the accessibility-first principles of the original while modernizing the stack for React/Next.js applications.
 
-- ✅ **Project Setup** - Complete
-- ✅ **Design System Foundation** - Complete
-- ✅ **Testing Infrastructure** - Complete (1063+ passing tests)
-- ✅ **Component Conversion** - Complete (40/40 components)
-- ✅ **Internationalization** - Complete (5 languages)
-- ✅ **Production Build** - Complete
-- ✅ **Deployment Ready** - Complete
+### Key Features
 
-## 🌟 Features
+- **35 Components** - Buttons, forms, navigation, content display, and layout components
+- **Accessibility First** - WCAG AA compliant with keyboard navigation, screen reader support, and focus management
+- **Internationalization** - 5 languages (English, Welsh, Arabic, Chinese, Spanish) with RTL support
+- **Design Tokens** - Colors, typography, spacing, and breakpoints from NHS UK
+- **Comprehensive Testing** - 1063+ unit tests (Vitest) and E2E tests (Playwright)
+- **Next.js 15** - Server-side rendering, static generation, and App Router support
 
-- **🎨 Design Tokens**: Comprehensive design tokens including colors, typography, spacing, and breakpoints
-- **♿ Accessibility First**: WCAG AA compliant components with built-in keyboard navigation and screen reader support
-- **🌍 Internationalization**: Multi-language support (English, Welsh, Arabic, Chinese, Spanish) with RTL layout support
-- **🧪 Comprehensive Testing**: Unit tests with Vitest and E2E tests with Playwright
-- **📦 35 Components**: Complete set of UI components from buttons to complex layouts
-- **🚀 Next.js Ready**: Optimized for Next.js with SSR and static generation support
+## Getting Started
 
-## 🏗️ Architecture
+### Prerequisites
 
-### Component Structure
+- Node.js 20.9.0+ or 22.11.0+
+- npm
 
-Each component follows a consistent structure:
+### Installation
+
+```bash
+git clone https://github.com/joelparkerhenderson/public-good-design-system-nhs-uk-next-tailwind-daisyui.git
+cd public-good-design-system-nhs-uk-next-tailwind-daisyui
+npm install
+```
+
+### Development
+
+```bash
+npm run dev          # Start development server on port 3000
+npm run build        # Production build
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run typecheck    # Run TypeScript type checking
+```
+
+### Testing
+
+```bash
+npm run test             # Run unit tests
+npm run test:watch       # Run tests in watch mode
+npm run test:coverage    # Run tests with coverage report
+npm run test:e2e         # Run Playwright E2E tests
+```
+
+## Architecture
+
+### Tech Stack
+
+| Layer        | Technology                     |
+| ------------ | ------------------------------ |
+| Framework    | Next.js 15 (App Router)        |
+| Language     | TypeScript 5.9 (strict mode)   |
+| Styling      | styled-components 6            |
+| i18n         | next-intl 4                    |
+| Unit Testing | Vitest + React Testing Library |
+| E2E Testing  | Playwright                     |
+| Deployment   | Vercel                         |
+
+### Project Structure
 
 ```
-src/components/[component-name]/
-├── index.tsx           # Main component
-├── [Component].tsx     # Component implementation
-├── [Component].test.tsx # Unit tests
-├── [Component].stories.tsx # Storybook stories
-├── README.md          # Component documentation
-└── examples/          # Usage examples
+src/
+  app/                    # Next.js App Router pages and layouts
+    [locale]/             # Locale-based routing
+    lib/                  # App utilities (styled-components registry)
+  components/             # 35 component directories
+    [component-name]/
+      Component.tsx       # Implementation
+      Component.test.tsx  # Unit tests
+      index.ts            # Exports
+    index.ts              # Barrel exports for all components
+    ThemeProvider.tsx      # styled-components theme wrapper
+  styles/
+    tokens.ts             # Design tokens (colors, typography, spacing)
+    GlobalStyles.tsx       # Global CSS via styled-components
+    styled.d.ts           # TypeScript augmentation for theme
+  types/                  # Shared TypeScript type definitions
+  utils/                  # Utility functions
+  i18n/                   # Internationalization configuration
+  hooks/                  # Custom React hooks
+  middleware.ts           # next-intl locale routing middleware
+messages/                 # i18n translation files (en, cy, ar, zh, es)
+tests/
+  setup.ts                # Vitest setup and global mocks
+  utils/test-utils.tsx    # Custom render with ThemeProvider
+  e2e/                    # Playwright test specs
+```
+
+### Component Pattern
+
+Each component follows this structure:
+
+```tsx
+// Typed props interface
+interface ButtonProps extends BaseComponentProps {
+  variant?: 'primary' | 'secondary' | 'warning';
+  disabled?: boolean;
+  onClick?: (event: React.MouseEvent) => void;
+}
+
+// styled-components for styling with theme tokens
+const StyledButton = styled.button<{ $variant: string }>`
+  background-color: ${({ theme, $variant }) => /* theme-based colors */};
+`;
+
+// Functional component with forwardRef where appropriate
+export function Button({ variant = 'primary', ...props }: ButtonProps) {
+  return <StyledButton $variant={variant} {...props} />;
+}
 ```
 
 ### Design Tokens
@@ -51,203 +127,97 @@ src/components/[component-name]/
 ```typescript
 import { theme } from "@/styles/tokens";
 
-// Colors
 theme.colors.primary; // #005eb8 (NHS Blue)
-theme.colors.white; // #ffffff
-theme.colors.black; // #212b32
-
-// Typography
-theme.typography.fontSize.base; // 1rem (16px)
-theme.typography.fontFamily.base; // Frutiger W01, Helvetica Neue...
-
-// Spacing
+theme.colors.green; // #007f3b (Success)
+theme.colors.red; // #d5281b (Error)
+theme.typography.fontSize.base; // 1rem
 theme.spacing[4]; // 1rem (16px)
-theme.spacing[8]; // 2rem (32px)
+theme.media.md; // @media (min-width: 768px)
 ```
 
-## 🚀 Getting Started
+## Components
 
-### Prerequisites
+### Form Elements (15)
 
-- Node.js 20.9.0 or 22.11.0+
-- npm or yarn
+ActionLink, BackLink, Button, CharacterCount, Checkboxes, DateInput, ErrorMessage, ErrorSummary, Fieldset, Hint, Input, Label, Radios, Select, Textarea
 
-### Installation
+### Navigation (5)
 
-```bash
-git clone [repository-url]
-cd public-good-design-system-with-next-js
-npm install
-```
+Breadcrumb, Footer, Header, Pagination, SkipLink
 
-### Development
+### Content Display (9)
 
-```bash
-# Start development server
-npm run dev
+Card, ContentsList, Details, Images, InsetText, NotificationBanner, Panel, SummaryList, Table
 
-# Run tests
-npm run test
+### Interactive (3)
 
-# Run E2E tests
-npm run test:e2e
+DoDontList, Tag, TaskList
 
-# Build for production
-npm run build
+### Layout (2)
 
-# Type checking
-npm run typecheck
+Tabs, WarningCallout
 
-# Linting
-npm run lint
-```
+### Utilities (1)
 
-## 🧪 Testing
+Hero
 
-### Unit Tests (Vitest)
-
-```bash
-npm run test           # Run tests once
-npm run test:watch     # Run tests in watch mode
-npm run test:coverage  # Run tests with coverage
-```
-
-### E2E Tests (Playwright)
-
-```bash
-npm run test:e2e       # Run E2E tests
-```
-
-## 📦 Components
-
-### Available Components (40 total)
-
-Complete set of production-ready components converted from the NHS UK Design System:
-
-**Form Elements:**
-
-- ActionLink, BackLink, Button, CharacterCount, Checkboxes, DateInput, ErrorMessage, ErrorSummary, Fieldset, Hint, Input, Label, Radios, Select, Textarea
-
-**Navigation:**
-
-- Breadcrumb, Footer, Header, SkipLink, Pagination
-
-**Content Display:**
-
-- Card, ContentsList, Details, Images, InsetText, NotificationBanner, Panel, SummaryList, Table, Tabs, WarningCallout
-
-**Interactive:**
-
-- DoDontList, Tag, TaskList
-
-**Utilities:**
-
-- Hero (currently under investigation for event handler optimization)
-
-### Component Usage
+### Usage
 
 ```tsx
-import { Button } from "@public-good/design-system";
+import { Button, Input, ErrorSummary } from "@public-good/design-system";
 
-function MyApp() {
+function MyForm() {
   return (
-    <Button variant="primary" onClick={() => console.log("Clicked!")}>
-      Save and continue
-    </Button>
+    <form>
+      <Input
+        id="email"
+        name="email"
+        label="Email address"
+        hint="We will only use this for notifications"
+        type="email"
+      />
+      <Button variant="primary">Submit</Button>
+    </form>
   );
 }
 ```
 
-## 🌍 Internationalization
+## Internationalization
 
-The design system supports multiple languages:
+Supported locales: `en` (English), `cy` (Welsh), `ar` (Arabic with RTL), `zh` (Chinese), `es` (Spanish).
 
-- English (en) - Primary
-- Welsh (cy)
-- Arabic (ar) - RTL support
-- Chinese (zh)
-- Spanish (es)
+Translations are in `messages/*.json`. The `[locale]` route segment and next-intl middleware handle locale detection and routing.
 
-## ♿ Accessibility
+## Accessibility
 
-All components are built with accessibility in mind:
+All components are built to WCAG AA standards:
 
-- WCAG AA compliance
-- Keyboard navigation support
-- Screen reader compatibility
-- Focus management
+- Semantic HTML elements
+- ARIA attributes and landmarks
+- Keyboard navigation
+- Focus management with visible focus indicators
+- Screen reader compatible
 - High contrast mode support
-- Reduced motion support
+- Reduced motion preference support
+- RTL layout support
 
-## 🎨 Design Principles
+## Deployment
 
-### Converted from NHS UK Design System
+Configured for Vercel with security headers (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, CSP). See `vercel.json` for full configuration.
 
-This design system maintains the core principles of the NHS UK Design System:
-
-- **Accessible**: Meeting WCAG AA standards
-- **Cohesive**: Consistent design patterns
-- **Open**: Built for reuse and contribution
-- **Useful**: Solving real user needs
-
-### Key Changes from NHS UK
-
-- **Modern Stack**: Next.js + TypeScript + styled-components
-- **Component Architecture**: React functional components with hooks
-- **Enhanced Testing**: Comprehensive unit and E2E testing
-- **Improved DX**: Better TypeScript support and developer experience
-- **Internationalization**: Built-in i18n support
-
-## 📚 Documentation
-
-### Component Documentation
-
-Each component includes:
-
-- Usage guidelines
-- Props documentation
-- Accessibility notes
-- Examples and variations
-- Migration notes from NHS UK
-
-### Design Tokens Documentation
-
-Complete documentation of all design tokens including:
-
-- Color palette and usage
-- Typography scale and guidelines
-- Spacing system
-- Breakpoints and responsive design
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-### Development Workflow
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Update documentation
-6. Submit a pull request
+3. Make changes and add tests
+4. Run `npm run test && npm run typecheck && npm run lint`
+5. Submit a pull request
 
-## 📄 License
+## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- **NHS UK Design System Team** - For creating the original design system
-- **GOV.UK Design System** - For design system inspiration and patterns
-- **React Community** - For the excellent ecosystem of tools and libraries
-
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/public-good/design-system/issues)
-- **Documentation**: [Design System Docs](https://public-good-design-system.vercel.app)
-- **Community**: [Discussions](https://github.com/public-good/design-system/discussions)
-
----
-
-Built with ❤️ for public good applications
+- [NHS UK Design System](https://service-manual.nhs.uk/design-system) - Original design system
+- [GOV.UK Design System](https://design-system.service.gov.uk/) - Design inspiration

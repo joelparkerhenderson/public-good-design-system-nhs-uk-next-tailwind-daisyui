@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import StyledComponentsRegistry from './lib/registry';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   creator: 'Public Good Team',
   publisher: 'Public Good',
   robots: 'index, follow',
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#005eb8',
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.ico',
@@ -31,6 +29,12 @@ export const metadata: Metadata = {
     title: 'Public Good Design System',
     description: 'A modern, accessible React component library for public good applications',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#005eb8',
 };
 
 export default function RootLayout({

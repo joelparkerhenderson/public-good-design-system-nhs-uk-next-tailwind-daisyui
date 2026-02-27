@@ -9,7 +9,7 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 
 // Generate unique IDs for components
 export function generateId(prefix?: string): string {
-  const id = Math.random().toString(36).substr(2, 9);
+  const id = Math.random().toString(36).substring(2, 11);
   return prefix ? `${prefix}-${id}` : id;
 }
 
